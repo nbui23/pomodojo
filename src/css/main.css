@@ -1,16 +1,63 @@
-body, h1, h2, p { margin: 0; padding: 0; }
-body { font-family: Arial, sans-serif; color: #333; background-color: #FFEADD; }
-.container { max-width: 1200px; margin: auto; padding: 20px; }
-.header, .footer { text-align: center; padding: 20px; }
-.main .hero { text-align: center; padding: 50px 20px; }
-.btn { display: inline-block; padding: 10px 20px; margin: 10px; border: none; border-radius: 5px; text-decoration: none; color: white; transition: background-color 0.3s ease; }
-.btn-primary { background-color: #FF6666; }
-.btn-primary:hover { background-color: #FF8989; }
-.btn-secondary { background-color: #FF8989; }
-.btn-secondary:hover { background-color: #FCAEAE; }
+/* main.css */
+
+/* Reset and font */
+body, h1, h2, p {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Color palette */
+:root {
+    --background-color: #FFEADD;
+    --primary-color: #FF6666;
+    --primary-hover-color: #FF8989;
+    --secondary-color: #FF8989;
+    --secondary-hover-color: #FCAEAE;
+}
+
+body {
+    background-color: var(--background-color);
+}
+
+/* Buttons */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-hover-color);
+}
+
+.btn-secondary {
+    background-color: var(--secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--secondary-hover-color);
+}
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .action-buttons { display: flex; flex-direction: column; }
-    .btn { width: 100%; margin: 10px 0; }
+    .action-buttons {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+        margin: 10px 0;
+    }
 }
