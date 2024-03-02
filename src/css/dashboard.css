@@ -1,0 +1,51 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.sidebar {
+    width: 200px;
+    height: 100vh;
+    background-color: #f0f0f0;
+    padding: 20px;
+    box-sizing: border-box;
+    float: left;
+}
+
+.profile, .message, .new-message {
+    margin-bottom: 10px;
+}
+
+.new-message {
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.main-container {
+    margin-left: 200px;
+    padding: 20px;
+}
+
+.pomodoro {
+    margin-top: 20px;
+}
+
+.timer {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+
+#schoolLogo {
+    width: 100px;
+    height: auto;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
