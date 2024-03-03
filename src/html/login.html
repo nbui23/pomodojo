@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login Page</title>
+    <link rel="stylesheet" href="../css/login.css" />
+    <link rel="stylesheet" href="../css/main.css" />
+  </head>
+  <body>
+    <div class="login-container">
+      <div class="login-header">
+        <a href="index.html">
+          <img
+            src="../assets/images/cutetomato.png"
+            alt="Pomodorm Logo"
+            class="emoji" />
+        </a>
+      </div>
+      <form class="login-form" action="/get-login" method="post">
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="email@school"
+          required />
+
+        <input
+          type="password"
+          id="password"
+          name="password"
+          placeholder="password"
+          required />
+
+        <button type="submit" class="btn-continue">Continue</button>
+      </form>
+    </div>
+  </body>
+</html>
