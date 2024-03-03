@@ -1,153 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="../css/main.css" />
     <title>Profile Page</title>
     <style>
-        input[type="text"] {
-            width: 300px;
-            padding: 8px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-            border-radius: 20px; /* Adjust the value to increase or decrease roundness */
-            outline: none; /* Remove the default outline on focus */
-        }
-        #nav {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 10px; 
-            background-color: #333;
-        }
-        #nav a {
-            color: #ede0e0; 
-            text-decoration: none;
-        }
-        #logo img {
-            height: 24px; 
-            width: 24px; 
-            margin-right: 8px;
-        }
-        #nav__links {
-            display: flex;
-        }
-        .nav__link {
-            color: #ede0e0; 
-            margin-right: 15px; 
-            text-decoration: none;
-        }
-        .scrollable-list {
-            max-height: 80vh;
-            overflow-y: auto;
-            padding: 10px;
-        }
-        .content-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 100px; /* Adjust as needed */
-        }
-        ul {
-            width: 300px;
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+      input[type="text"] {
+        width: 300px;
+        padding: 8px;
+        margin-bottom: 10px;
+        border: 1px solid #ddd;
+        border-radius: 20px; /* Adjust the value to increase or decrease roundness */
+        outline: none; /* Remove the default outline on focus */
+      }
+      #nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px;
+        background-color: #333;
+      }
+      #nav a {
+        color: #ede0e0;
+        text-decoration: none;
+      }
+      #logo img {
+        height: 24px;
+        width: 24px;
+        margin-right: 8px;
+      }
+      #nav__links {
+        display: flex;
+      }
+      .nav__link {
+        color: #ede0e0;
+        margin-right: 15px;
+        text-decoration: none;
+      }
+      .scrollable-list {
+        max-height: 80vh;
+        overflow-y: auto;
+        padding: 10px;
+      }
+      .content-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin-top: 100px; /* Adjust as needed */
+      }
+      ul {
+        width: 300px;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
 
-        li {
+      li {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin: 5px 0;
         padding: 10px;
         border: 1px solid #ddd;
-        background-color: #333;
         border-radius: 5px;
         color: #fff;
-        }
+        background-color: #333333;
+      }
 
-        li::before {
-            content: counter(list-item);
-            counter-increment: list-item;
-            margin-right: 10px;
-            font-weight: bold;
-        }
+      li::before {
+        content: counter(list-item);
+        counter-increment: list-item;
+        margin-right: 10px;
+        font-weight: bold;
+      }
 
-        .email {
-            flex-grow: 1; /* Takes up remaining space */
-            margin: 0 10px;
-            overflow: hidden;
-            text-overflow: ellipsis; /* Handles long emails by adding ellipsis */
-        }
+      .email {
+        flex-grow: 1; /* Takes up remaining space */
+        margin: 0 10px;
+        overflow: hidden;
+        text-overflow: ellipsis; /* Handles long emails by adding ellipsis */
+      }
 
-        .points {
-            font-weight: bold;
-        }
+      .points {
+        font-weight: bold;
+      }
+
+      /* Medal Colors */
+      .gold {
+        background-color: gold;
+      }
+      .silver {
+        background-color: silver;
+      }
+      .bronze {
+        background-color: #cd7f32;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header id="nav">
-        <div class="nav--list">
-            <a href="/room.html">
-                <h3 id="logo" style="display: flex; align-items: center; margin: 0;">
-                    <img src="../assets/images/cutetomato.png" alt="Site Logo">
-                    <span>Pomodojo</span>
-                </h3>
-            </a>
-        </div>
-        <div id="nav__links">
-            <a class="nav__link" href="/marketplace.html" style="text-decoration: none;">Marketplace</a>
-            <a class="nav__link" href="" style="color: rgb(230, 228, 228); border-bottom: 2px solid #FF8989; text-decoration: none;">Leaderboard</a>
-        </div>        
+      <div class="nav--list">
+        <a href="/room.html">
+          <h3 id="logo" style="display: flex; align-items: center; margin: 0">
+            <img src="../assets/images/cutetomato.png" alt="Site Logo" />
+            <span>Pomodojo</span>
+          </h3>
+        </a>
+      </div>
+      <div id="nav__links">
+        <a
+          class="nav__link"
+          href="/marketplace.html"
+          style="text-decoration: none"
+          >Marketplace</a
+        >
+        <a
+          class="nav__link"
+          href=""
+          style="
+            color: rgb(230, 228, 228);
+            border-bottom: 2px solid #ff8989;
+            text-decoration: none;
+          "
+          >Leaderboard</a
+        >
+      </div>
     </header>
     <!-- The rest of the leaderboard page content goes here -->
     <div class="content-container">
-        <input type="text" id="searchInput" placeholder="Search by email" oninput="searchLeaderboard()">
-        <div class="scrollable-list">
-            <ul id="leaderboard-list"></ul>
-        </div>
+      <input
+        type="text"
+        id="searchInput"
+        placeholder="Search by email"
+        oninput="searchLeaderboard()" />
+      <div class="scrollable-list">
+        <ul id="leaderboard-list"></ul>
+      </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', async () => {
-          const leaderboardList = document.getElementById('leaderboard-list');
-    
-          try {
-            const response = await fetch('/get-data');
-            const data = await response.json();
+      document.addEventListener("DOMContentLoaded", async () => {
+        const leaderboardList = document.getElementById("leaderboard-list");
 
-            //sorting the data
-            data.sort((a, b) => b.score - a.score);
-    
-            // Process data and update the leaderboardList
-            let i = 1;
-            data.forEach(entry => {
-              const listItem = document.createElement('li');
-              listItem.textContent = `${entry.email} - ${entry.score}`;
-              leaderboardList.appendChild(listItem);
-              i++;
-            });
-          } catch (err) {
-            console.error('Error fetching leaderboard data', err);
-          }
-        });
+        try {
+          const response = await fetch("/get-data");
+          const data = await response.json();
 
-        function searchLeaderboard() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toUpperCase();
-            const leaderboardList = document.getElementById('leaderboard-list');
-            const items = leaderboardList.getElementsByTagName('li');
+          // Sorting the data
+          data.sort((a, b) => b.score - a.score);
 
-            for (let i = 0; i < items.length; i++) {
-                const textValue = items[i].textContent || items[i].innerText;
-                if (textValue.toUpperCase().indexOf(filter) > -1) {
-                    items[i].style.display = '';
-                } else {
-                    items[i].style.display = 'none';
-                }
+          // Process data and update the leaderboardList
+          let i = 1;
+          data.forEach((entry) => {
+            const listItem = document.createElement("li");
+            listItem.textContent = `${entry.email} - ${entry.score}`;
+
+            // Assign classes for top three positions
+            if (i === 1) {
+              listItem.classList.add("gold");
+            } else if (i === 2) {
+              listItem.classList.add("silver");
+            } else if (i === 3) {
+              listItem.classList.add("bronze");
             }
+
+            leaderboardList.appendChild(listItem);
+            i++;
+          });
+        } catch (err) {
+          console.error("Error fetching leaderboard data", err);
         }
+      });
+
+      function searchLeaderboard() {
+        const input = document.getElementById("searchInput");
+        const filter = input.value.toUpperCase();
+        const leaderboardList = document.getElementById("leaderboard-list");
+        const items = leaderboardList.getElementsByTagName("li");
+
+        for (let i = 0; i < items.length; i++) {
+          const textValue = items[i].textContent || items[i].innerText;
+          if (textValue.toUpperCase().indexOf(filter) > -1) {
+            items[i].style.display = "";
+          } else {
+            items[i].style.display = "none";
+          }
+        }
+      }
     </script>
-</body>
+  </body>
 </html>

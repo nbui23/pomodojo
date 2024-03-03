@@ -3,33 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/profile.css'>
     <title>Profile Page</title>
-    <style>
-        #nav {
-            display: flex; 
-            justify-content: space-between; 
-            align-items: center; 
-            padding: 10px; 
-            background-color: #333;
-        }
-        #nav a {
-            color: #ede0e0; 
-            text-decoration: none;
-        }
-        #logo img {
-            height: 24px; 
-            width: 24px; 
-            margin-right: 8px;
-        }
-        #nav__links {
-            display: flex;
-        }
-        .nav__link {
-            color: #ede0e0; 
-            margin-right: 15px; 
-            text-decoration: none;
-        }
-    </style>
 </head>
 <body>
     <header id="nav">
@@ -47,5 +22,20 @@
         </div>
     </header>
     <!-- The rest of the profile page content goes here -->
+    <div id="profile">
+        <div class="profile__image__div">
+            <img classs="profile__image__div" id="profile__image" src="../assets/images/cutetomato.png" alt="Profile Picture">
+        </div>
+        <div id="profile__info">
+            <p id="profile__email"></p>
+            <p id="profile__school"></p>
+            <p id="score"></p>
+            <p id="points"></p>
+            <p id="leaderboard"></p>
+        </div>
+    </div>
+         
+    
+    <script src="../js/profile.js"></script>
 </body>
 </html>

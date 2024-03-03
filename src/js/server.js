@@ -28,6 +28,18 @@ app.get("/room.html", isAuthenticated, async (req, res) => {
   res.sendFile(path.join(__dirname, "../html/room.html"));
 });
 
+app.get("/profile.html", isAuthenticated, async (req, res) => {
+  res.sendFile(path.join(__dirname, "../html/profile.html"));
+});
+
+app.get("/leaderboard.html", isAuthenticated, async (req, res) => {
+  res.sendFile(path.join(__dirname, "../html/leaderboard.html"));
+});
+
+app.get("/marketplace.html", isAuthenticated, async (req, res) => {
+  res.sendFile(path.join(__dirname, "../html/marketplace.html"));
+});
+
 app.use(express.static(path.join(__dirname, "../html")));
 app.use(express.static(path.join(__dirname, "../css")));
 app.use(express.static(path.join(__dirname, "../js")));
@@ -94,7 +106,7 @@ app.post("/get-login", async (req, res) => {
 
     if (found === 1) {
       console.log("User found");
-      res.redirect("/room.html"); // Corrected redirect URL
+      res.redirect("/profile.html"); // Corrected redirect URL
     } else {
       res.redirect("/login.html");
     }
@@ -133,6 +145,15 @@ app.get("/get-data", async (req, res) => {
   } catch (error) {
     console.error("Error retrieving data from MongoDB:", error);
     res.status(500).send("Internal Server Error");
+  }
+});
+
+// Route to get session user's information
+app.get("/get-session-user", (req, res) => {
+  if (req.session && req.session.user) {
+    res.json(req.session.user);
+  } else {
+    res.status(401).send("Unauthorized");
   }
 });
 
