@@ -4,7 +4,7 @@ const path = require('path');
 const { MongoClient } = require('mongodb');
 
 const app = express();
-const port = 3000;
+const port = 4000;
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -45,6 +45,15 @@ app.post('/submit-form', async (req, res) => {
   } catch (error) {
     console.error('Error inserting data into MongoDB:', error);
     res.status(500).send('Internal Server Error');
+  }
+});
+
+// Route to get session user's information
+app.get("/get-session-user", (req, res) => {
+  if (req.session && req.session.user) {
+    res.json(req.session.user);
+  } else {
+    res.status(401).send("Unauthorized");
   }
 });
 
