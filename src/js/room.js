@@ -73,3 +73,18 @@ let hideDisplayFrame = () => {
 
   displayFrame.addEventListener('click', hideDisplayFrame);
 }
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const lofiMusicPlayer = document.getElementById('lofi-music-player');
+//   const volumeSlider = document.getElementById('volume-slider');
+//   const playButton = document.getElementById('play-music-btn');
+
+//   playButton.addEventListener('click', () => {
+//       lofiMusicPlayer.play().catch(error => console.error("Error trying to play audio:", error));
+//   });
+
+//   volumeSlider.addEventListener('input', () => {
+//       lofiMusicPlayer.volume = volumeSlider.value / 100;
+//   });
+// });
+
