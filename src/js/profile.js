@@ -52,6 +52,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       profileDiv.style.display = 'flex';
       buttonsDiv.style.display = 'block';
     } catch (err) {
-      console.error('Error fetching leaderboard data', err);
+      console.error('Error fetching profile data', err);
     }
   });
