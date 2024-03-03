@@ -69,6 +69,7 @@ app.post("/sign-up", async (req, res) => {
 // Modified route for handling login
 app.post("/get-login", async (req, res) => {
   try {
+    console.log("Request body:", req.body);
     const client = await MongoClient.connect(mongoURL);
     const db = client.db();
 
@@ -92,6 +93,7 @@ app.post("/get-login", async (req, res) => {
     });
 
     if (found === 1) {
+      console.log("User found");
       res.redirect("/room.html"); // Corrected redirect URL
     } else {
       res.redirect("/login.html");
