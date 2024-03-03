@@ -11,11 +11,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // MongoDB Connection String (replace with your own)
 const mongoURL = 'mongodb+srv://admin:admin@studyhallapp.pty8srz.mongodb.net/';
 
-// Define the directory where your static files (like index.html) are located
-const staticDir = path.join(__dirname, 'src'); // Assuming your HTML files are in a folder named 'public'
-
-// Serve static files from the 'public' directory
-app.use(express.static(staticDir));
 
 app.get('/', (req, res) => {
   res.send('Hello, this is the root route!');
