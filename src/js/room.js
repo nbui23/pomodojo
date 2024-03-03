@@ -41,6 +41,8 @@ let hideDisplayFrame = () => {
   displayFrame.addEventListener('click', hideDisplayFrame);
 }
 
+const endStageSound = new Audio('../assets/sounds/noti.wav');
+
 const stages = [
   { name: "Study", duration: 25 },
   { name: "Short Break", duration: 5 },
@@ -49,8 +51,6 @@ const stages = [
   { name: "Study", duration: 25 },
   { name: "Long Break", duration: 35 }
 ];
-
-const notificationSound = new Audio('noti.wav');
 
 function getSecondsSinceStartOfDay() {
   const now = new Date();
@@ -64,27 +64,26 @@ function getCurrentStageAndTimeLeft() {
 
   let cumulativeSeconds = 0;
   for (let i = 0; i < stages.length; i++) {
-    const previousCumulativeSeconds = cumulativeSeconds;
     cumulativeSeconds += stages[i].duration * 60;
     if (secondsIntoCurrentCycle < cumulativeSeconds) {
-      // Check if we just transitioned to this stage
-      if (secondsIntoCurrentCycle < cumulativeSeconds && secondsIntoCurrentCycle >= previousCumulativeSeconds && previousCumulativeSeconds !== 0) {
-        notificationSound.play();
-      }
       return {
-        currentStage: stages[i].name, // Adjusted to return stage name for clarity
+        currentStage: i,
         timeLeft: cumulativeSeconds - secondsIntoCurrentCycle
       };
     }
   }
 }
 
-
 function updateTimerDisplay() {
   const { currentStage, timeLeft } = getCurrentStageAndTimeLeft();
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
+
   document.getElementById('pomodoroTimer').textContent = `${stages[currentStage].name}: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+  if (timeLeft === 0) {
+    endStageSound.play();
+  }
 }
 
 setInterval(() => {
