@@ -67,33 +67,31 @@ let switchToCamera = async () => {
 }
 
 let handleUserPublished = async (user, mediaType) => {
-    remoteUsers[user.uid] = user
+    remoteUsers[user.uid] = user;
 
-    await client.subscribe(user, mediaType)
-
-    let player = document.getElementById(`user-container-${user.uid}`)
-    if(player === null) {
-        player = `<div class="video__container" id="user-container-${user.uid}">
-                    <div class="video-player" id="user-${user.uid}"></div>
-                </div>`
-        document.getElementById('streams__container').insertAdjacentHTML('beforeend', player)
-        document.getElementById(`user-container-${user.uid}`).addEventListener('click', expandVideoFrame)
+    try {
+        await client.subscribe(user, mediaType);
+    } catch (error) {
+        console.error('Subscription error: ', error);
+        return; // Exit the function if subscription fails
     }
 
-    if (displayFrame.style.display) {
-        let videoFrame = document.getElementById(`user-container-${user.uid}`)
-        videoFrame.style.height = '100px'
-        videoFrame.style.width = '100px'
+    let playerExists = document.getElementById(`user-container-${user.uid}`);
+    if (!playerExists) {
+        let player = `<div class="video__container" id="user-container-${user.uid}">
+                        <div class="video-player" id="user-${user.uid}"></div>
+                      </div>`;
+        document.getElementById('streams__container').insertAdjacentHTML('beforeend', player);
+        document.getElementById(`user-container-${user.uid}`).addEventListener('click', expandVideoFrame);
     }
 
-    if(mediaType === 'video') {
-        user.videoTrack.play(`user-${user.uid}`)
+    // Play the user's media
+    if (mediaType === 'video') {
+        user.videoTrack.play(`user-${user.uid}`);
+    } else if (mediaType === 'audio') {
+        user.audioTrack.play(); // Audio is played without a player view
     }
-
-    if(mediaType === 'audio') {
-        user.audioTrack.play()
-    }
-}
+};
 
 let handleUserLeft = async (user) => {
     delete remoteUsers[user.uid]; // Remove the user from the remoteUsers object

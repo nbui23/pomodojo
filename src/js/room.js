@@ -1,36 +1,3 @@
-let messagesContainer = document.getElementById('messages');
-messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-const memberContainer = document.getElementById('members__container');
-const memberButton = document.getElementById('members__button');
-
-const chatContainer = document.getElementById('messages__container');
-const chatButton = document.getElementById('chat__button');
-
-let activeMemberContainer = false;
-
-memberButton.addEventListener('click', () => {
-  if (activeMemberContainer) {
-    memberContainer.style.display = 'none';
-  } else {
-    memberContainer.style.display = 'block';
-  }
-
-  activeMemberContainer = !activeMemberContainer;
-});
-
-let activeChatContainer = false;
-
-chatButton.addEventListener('click', () => {
-  if (activeChatContainer) {
-    chatContainer.style.display = 'none';
-  } else {
-    chatContainer.style.display = 'block';
-  }
-
-  activeChatContainer = !activeChatContainer;
-});
-
 let displayFrame = document.getElementById('stream__box');
 let videoFrames = document.getElementsByClassName('video__container');
 let userIdInDisplayFrame = null;
@@ -83,6 +50,8 @@ const stages = [
   { name: "Long Break", duration: 35 }
 ];
 
+const notificationSound = new Audio('noti.wav');
+
 function getSecondsSinceStartOfDay() {
   const now = new Date();
   return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
@@ -95,15 +64,21 @@ function getCurrentStageAndTimeLeft() {
 
   let cumulativeSeconds = 0;
   for (let i = 0; i < stages.length; i++) {
+    const previousCumulativeSeconds = cumulativeSeconds;
     cumulativeSeconds += stages[i].duration * 60;
     if (secondsIntoCurrentCycle < cumulativeSeconds) {
+      // Check if we just transitioned to this stage
+      if (secondsIntoCurrentCycle < cumulativeSeconds && secondsIntoCurrentCycle >= previousCumulativeSeconds && previousCumulativeSeconds !== 0) {
+        notificationSound.play();
+      }
       return {
-        currentStage: i,
+        currentStage: stages[i].name, // Adjusted to return stage name for clarity
         timeLeft: cumulativeSeconds - secondsIntoCurrentCycle
       };
     }
   }
 }
+
 
 function updateTimerDisplay() {
   const { currentStage, timeLeft } = getCurrentStageAndTimeLeft();
@@ -115,18 +90,4 @@ function updateTimerDisplay() {
 setInterval(() => {
   updateTimerDisplay();
 }, 1000);
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const lofiMusicPlayer = document.getElementById('lofi-music-player');
-//   const volumeSlider = document.getElementById('volume-slider');
-//   const playButton = document.getElementById('play-music-btn');
-
-//   playButton.addEventListener('click', () => {
-//       lofiMusicPlayer.play().catch(error => console.error("Error trying to play audio:", error));
-//   });
-
-//   volumeSlider.addEventListener('input', () => {
-//       lofiMusicPlayer.volume = volumeSlider.value / 100;
-//   });
-// });
 
