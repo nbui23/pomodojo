@@ -45,7 +45,7 @@
 
 /* Signup button, similar to the login button style */
 .btn-signup {
-    background-color: var(--primary-color);
+    background-color: #FF8989;
     color: white;
     padding: 1em;
     border-radius: 5px;
@@ -56,7 +56,7 @@
 }
 
 .btn-signup:hover {
-    background-color: var(--primary-hover-color);
+    background-color: #FCAEAE;
 }
 
 body {

@@ -55,6 +55,12 @@ a {
   border-radius: 50%;
 }
 
+.btn-primary {
+  background-color: #FF8989; /* Sets the background color of the button */
+  border: none; /* Optional: removes the border, if you prefer */
+  color: #fff; /* Sets the text color to white for better contrast */
+}
+
 #nav {
   position: fixed;
   top: 0;

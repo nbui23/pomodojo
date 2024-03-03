@@ -48,7 +48,7 @@
 
 /* Continue button - using main.css button style */
 .btn-continue {
-    background-color: var(--primary-color); /* Primary button color */
+    background-color: #FF8989; /* Primary button color */
     color: white; /* Text color for contrast */
     padding: 1em;
     border-radius: 5px;
@@ -59,7 +59,7 @@
 }
 
 .btn-continue:hover {
-    background-color: var(--primary-hover-color); /* Hover state color */
+    background-color: #FCAEAE; /* Hover state color */
 }
 
 /* Ensure the full height for the body and html to stretch the flex container */
