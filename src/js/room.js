@@ -74,6 +74,48 @@ let hideDisplayFrame = () => {
   displayFrame.addEventListener('click', hideDisplayFrame);
 }
 
+const stages = [
+  { name: "Study", duration: 25 },
+  { name: "Short Break", duration: 5 },
+  { name: "Study", duration: 25 },
+  { name: "Short Break", duration: 5 },
+  { name: "Study", duration: 25 },
+  { name: "Long Break", duration: 35 }
+];
+
+function getSecondsSinceStartOfDay() {
+  const now = new Date();
+  return now.getHours() * 3600 + now.getMinutes() * 60 + now.getSeconds();
+}
+
+function getCurrentStageAndTimeLeft() {
+  const secondsSinceStartOfDay = getSecondsSinceStartOfDay();
+  const totalCycleDuration = stages.reduce((total, stage) => total + stage.duration, 0) * 60;
+  const secondsIntoCurrentCycle = secondsSinceStartOfDay % totalCycleDuration;
+
+  let cumulativeSeconds = 0;
+  for (let i = 0; i < stages.length; i++) {
+    cumulativeSeconds += stages[i].duration * 60;
+    if (secondsIntoCurrentCycle < cumulativeSeconds) {
+      return {
+        currentStage: i,
+        timeLeft: cumulativeSeconds - secondsIntoCurrentCycle
+      };
+    }
+  }
+}
+
+function updateTimerDisplay() {
+  const { currentStage, timeLeft } = getCurrentStageAndTimeLeft();
+  const minutes = Math.floor(timeLeft / 60);
+  const seconds = timeLeft % 60;
+  document.getElementById('pomodoroTimer').textContent = `${stages[currentStage].name}: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+}
+
+setInterval(() => {
+  updateTimerDisplay();
+}, 1000);
+
 // document.addEventListener('DOMContentLoaded', () => {
 //   const lofiMusicPlayer = document.getElementById('lofi-music-player');
 //   const volumeSlider = document.getElementById('volume-slider');
