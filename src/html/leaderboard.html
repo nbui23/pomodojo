@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
+    <title>Profile Page</title>
+    <style>
+        #nav {
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px; 
+            background-color: #333;
+        }
+        #nav a {
+            color: #ede0e0; 
+            text-decoration: none;
+        }
+        #logo img {
+            height: 24px; 
+            width: 24px; 
+            margin-right: 8px;
+        }
+        #nav__links {
+            display: flex;
+        }
+        .nav__link {
+            color: #ede0e0; 
+            margin-right: 15px; 
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header id="nav">
+        <div class="nav--list">
+            <a href="/src/html/room.html">
+                <h3 id="logo" style="display: flex; align-items: center; margin: 0;">
+                    <img src="../assets/images/cutetomato.png" alt="Site Logo">
+                    <span>Pomodojo</span>
+                </h3>
+            </a>
+        </div>
+        <div id="nav__links">
+            <a class="nav__link" href="/src/html/marketplace.html" style="text-decoration: none;">Marketplace</a>
+            <a class="nav__link" href="" style="color: rgb(230, 228, 228); border-bottom: 2px solid #FF8989; text-decoration: none;">Leaderboard</a>
+        </div>        
+    </header>
+    <!-- The rest of the leaderboard page content goes here -->
+</body>
+</html>
