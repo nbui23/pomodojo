@@ -47,5 +47,28 @@
         </div>        
     </header>
     <!-- The rest of the leaderboard page content goes here -->
+    <ol id="leaderboard-list"></ol>
+    <script>
+        document.addEventListener('DOMContentLoaded', async () => {
+          const leaderboardList = document.getElementById('leaderboard-list');
+    
+          try {
+            const response = await fetch('/get-leaderboard');
+            const data = await response.json();
+
+            //sorting the data
+            data.sort((a, b) => b.score - a.score);
+    
+            // Process data and update the leaderboardList
+            data.forEach(entry => {
+              const listItem = document.createElement('li');
+              listItem.textContent = `${entry.email} - ${entry.score}`;
+              leaderboardList.appendChild(listItem);
+            });
+          } catch (err) {
+            console.error('Error fetching leaderboard data', err);
+          }
+        });
+      </script>
 </body>
 </html>

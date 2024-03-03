@@ -115,6 +115,25 @@ app.get("/logout", (req, res) => {
   res.redirect("/login.html");
 });
 
+// get data for leaderboard
+app.get("/get-data", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(mongoURL);
+    const db = client.db();
+
+    const collection = db.collection("UserInfo");
+
+    const data = await collection.find({}).toArray();
+
+    client.close();
+
+    res.json(data);
+  } catch (error) {
+    console.error("Error retrieving data from MongoDB:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
