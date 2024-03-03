@@ -136,6 +136,15 @@ app.get("/get-data", async (req, res) => {
   }
 });
 
+// Route to get session user's information
+app.get("/get-session-user", (req, res) => {
+  if (req.session && req.session.user) {
+    res.json(req.session.user);
+  } else {
+    res.status(401).send("Unauthorized");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
