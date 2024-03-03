@@ -42,12 +42,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       const scoreDiv = document.getElementById('score');
       const pointsDiv = document.getElementById('points');
       const leaderboardDiv = document.getElementById('leaderboard');
+      const schoolRoomButton = document.getElementById('school-room');
+
 
       emailDiv.textContent = `Email: ${email}`;
       schoolDiv.textContent = `School: ${school}`;
       scoreDiv.textContent = `Score: ${score}`;
       pointsDiv.textContent = `Points: ${points}`;
       leaderboardDiv.textContent = `Leaderboard Position: ${userRank}`;
+      schoolRoomButton.href = school === 'Carleton University' ? '/room.html?room=carleton' : '/room.html?room=uOttawa';
+      schoolRoomButton.textContent = `Join ${school} Room`;
+
       loadingDiv.style.display = 'none';
       profileDiv.style.display = 'flex';
       buttonsDiv.style.display = 'block';

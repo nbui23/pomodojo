@@ -52,11 +52,11 @@
 }
 
 #profile__info {
-    text-align: center;
+    text-align: left;
     display: flex;
     flex-direction: column;
     justify-content: space-around; /* Distribute items evenly vertically */
-    align-items: center;
+    align-items: left;
     height: 35%; /* Adjust the height as needed */
     background-color: white; /* Background color for the profile info section */
     padding: 20px; /* Add padding to create space inside the profile info section */
