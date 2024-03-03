@@ -60,10 +60,6 @@
           align-items: center;
           flex-grow: 1;
         ">
-        <button
-          id="members__button"
-          style="background-color: transparent; border: none"></button>
-        <!-- Empty Members Button -->
         <a href="/">
           <h3 id="logo" style="display: flex; align-items: center; margin: 0">
             <img
@@ -73,10 +69,6 @@
             <span style="color: #ede0e0; font-size: 20px">Pomodojo</span>
           </h3>
         </a>
-        <button
-          id="chat__button"
-          style="background-color: transparent; border: none"></button>
-        <!-- Empty Chat Button -->
       </div>
 
       <div id="nav__links" style="display: flex">
@@ -134,26 +126,11 @@
             </button>
           </div>
         </section>
-
-        <section id="messages__container">
-          <div id="messages"></div>
-
-          <form id="message__form">
-            <input
-              type="text"
-              name="message"
-              placeholder="Send a message...." />
-          </form>
-        </section>
       </div>
-
-      <!-- <div id="music-player-controls">
-            <button id="play-music-btn">Play Music</button>
-            <input type="range" id="volume-slider" min="0" max="100" value="50">            
-        </div>         -->
     </main>
   </body>
   <script type="text/javascript" src="../js/AgoraRTC_N-4.20.1.js"></script>
   <script type="text/javascript" src="../js/room.js"></script>
   <script type="text/javascript" src="../js/room_rtc.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
 </html>

@@ -1,36 +1,3 @@
-let messagesContainer = document.getElementById('messages');
-messagesContainer.scrollTop = messagesContainer.scrollHeight;
-
-const memberContainer = document.getElementById('members__container');
-const memberButton = document.getElementById('members__button');
-
-const chatContainer = document.getElementById('messages__container');
-const chatButton = document.getElementById('chat__button');
-
-let activeMemberContainer = false;
-
-memberButton.addEventListener('click', () => {
-  if (activeMemberContainer) {
-    memberContainer.style.display = 'none';
-  } else {
-    memberContainer.style.display = 'block';
-  }
-
-  activeMemberContainer = !activeMemberContainer;
-});
-
-let activeChatContainer = false;
-
-chatButton.addEventListener('click', () => {
-  if (activeChatContainer) {
-    chatContainer.style.display = 'none';
-  } else {
-    chatContainer.style.display = 'block';
-  }
-
-  activeChatContainer = !activeChatContainer;
-});
-
 let displayFrame = document.getElementById('stream__box');
 let videoFrames = document.getElementsByClassName('video__container');
 let userIdInDisplayFrame = null;
@@ -74,6 +41,8 @@ let hideDisplayFrame = () => {
   displayFrame.addEventListener('click', hideDisplayFrame);
 }
 
+const endStageSound = new Audio('../assets/sounds/noti.wav');
+
 const stages = [
   { name: "Study", duration: 25 },
   { name: "Short Break", duration: 5 },
@@ -109,24 +78,15 @@ function updateTimerDisplay() {
   const { currentStage, timeLeft } = getCurrentStageAndTimeLeft();
   const minutes = Math.floor(timeLeft / 60);
   const seconds = timeLeft % 60;
+
   document.getElementById('pomodoroTimer').textContent = `${stages[currentStage].name}: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+  if (timeLeft === 0) {
+    endStageSound.play();
+  }
 }
 
 setInterval(() => {
   updateTimerDisplay();
 }, 1000);
-
-// document.addEventListener('DOMContentLoaded', () => {
-//   const lofiMusicPlayer = document.getElementById('lofi-music-player');
-//   const volumeSlider = document.getElementById('volume-slider');
-//   const playButton = document.getElementById('play-music-btn');
-
-//   playButton.addEventListener('click', () => {
-//       lofiMusicPlayer.play().catch(error => console.error("Error trying to play audio:", error));
-//   });
-
-//   volumeSlider.addEventListener('input', () => {
-//       lofiMusicPlayer.volume = volumeSlider.value / 100;
-//   });
-// });
 

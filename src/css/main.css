@@ -129,19 +129,6 @@ a {
   border-color: #FF8989;
 }
 
-#create__room__btn {
-  display: block;
-  background-color: #FF8989;
-  padding: 8px 24px;
-  font-size: 14px;
-  font-weight: 500;
-  border-radius: 5px;
-}
-
-#create__room__btn:hover {
-  background-color: #FF8989;
-}
-
 .nav--list {
   display: none;
   display: flex;
@@ -149,16 +136,6 @@ a {
   align-items: center;
 }
 
-#members__button,
-#chat__button {
-  display: none;
-  cursor: pointer;
-  background: transparent;
-  border: none;
-}
-
-#members__button:hover svg > path,
-#chat__button:hover svg,
 .nav__link:hover svg {
   fill: #FF8989;
 }
@@ -166,35 +143,4 @@ a {
 .nav__link svg {
   width: 0;
   height: 0;
-}
-
-@media (max-width: 640px) {
-  #members__button {
-    display: block;
-  }
-
-  .nav__link svg {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-  .nav__link,
-  #create__room__btn {
-    font-size: 0;
-    border: none;
-  }
-
-  .nav__link.active, .nav__link:hover {
-    color: rgb(230, 228, 228);
-    border-bottom: 2px solid #FF8989;
-  }
-  
-  #create__room__btn {
-    padding: 0;
-    background-color: transparent;
-    border-radius: 50%;
-  }
-
-  #create__room__btn:hover {
-    background-color: transparent;
-  }
 }
