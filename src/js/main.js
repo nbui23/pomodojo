@@ -6,6 +6,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Event listener for the Login button
   document.getElementById("loginBtn").addEventListener("click", function () {
-    window.location.href = "login.html"; // Change to your login page's URL
+    window.location.href = "/login.html"; // Change to your login page's URL
   });
 });
