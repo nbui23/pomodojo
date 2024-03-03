@@ -129,6 +129,42 @@
       </div>
     </main>
   </body>
+  <script>
+    function performPostRequest() {
+        // Your POST request logic goes here
+        // For example, using the Fetch API:
+        fetch('/update-score', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                // Add any additional headers as needed
+            },
+            // Add your request body here if needed
+            // body: JSON.stringify({ key: 'value' }),
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.json(); // Or return response.text() if expecting plain text
+        })
+        .then(data => {
+            console.log('POST request successful', data);
+        })
+        .catch(error => {
+            console.error('Error during POST request', error);
+        });
+    }
+
+    // Perform the initial POST request
+    performPostRequest();
+
+    // Set up an interval to perform the POST request every minute (60,000 milliseconds)
+    const intervalId = setInterval(performPostRequest, 60000);
+
+    // Uncomment the following line if you want to stop the interval after a certain number of repetitions
+    // setTimeout(() => clearInterval(intervalId), numberOfRepetitions * 60000);
+</script>
   <script type="text/javascript" src="../js/AgoraRTC_N-4.20.1.js"></script>
   <script type="text/javascript" src="../js/room.js"></script>
   <script type="text/javascript" src="../js/room_rtc.js"></script>

@@ -136,6 +136,29 @@ app.get("/get-data", async (req, res) => {
   }
 });
 
+app.post("/update-score", async (req, res) => {
+  try {
+    const client = await MongoClient.connect(mongoURL);
+    const db = client.db();
+
+    const collection = db.collection("UserInfo");
+
+    console.log(`Updating points for user: ${req.session.user.email}`);
+    const query = { email: req.session.user.email };
+    const result = await collection.find(query).toArray();
+    let newScore = result[0].score + 1;
+    let newPoints = result[0].points + 1;
+  
+    await collection.updateOne({email: req.session.user.email}, { $set: { score: newScore} });
+    await collection.updateOne({email: req.session.user.email}, { $set: { points: newPoints } });
+    console.log(`Before: ${newScore-1}, After: ${newScore}`);
+    client.close();
+  } catch (error) {
+    console.error("Error inserting data into MongoDB:", error);
+    res.status(500).send("Internal Server Error");
+  }
+});
+
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
