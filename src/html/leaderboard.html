@@ -5,6 +5,14 @@
     <link rel='stylesheet' type='text/css' media='screen' href='../css/main.css'>
     <title>Profile Page</title>
     <style>
+        input[type="text"] {
+            width: 300px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 20px; /* Adjust the value to increase or decrease roundness */
+            outline: none; /* Remove the default outline on focus */
+        }
         #nav {
             display: flex; 
             justify-content: space-between; 
@@ -29,6 +37,53 @@
             margin-right: 15px; 
             text-decoration: none;
         }
+        .scrollable-list {
+            max-height: 80vh;
+            overflow-y: auto;
+            padding: 10px;
+        }
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 100px; /* Adjust as needed */
+        }
+        ul {
+            width: 300px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 5px 0;
+        padding: 10px;
+        border: 1px solid #ddd;
+        background-color: #333;
+        border-radius: 5px;
+        color: #fff;
+        }
+
+        li::before {
+            content: counter(list-item);
+            counter-increment: list-item;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .email {
+            flex-grow: 1; /* Takes up remaining space */
+            margin: 0 10px;
+            overflow: hidden;
+            text-overflow: ellipsis; /* Handles long emails by adding ellipsis */
+        }
+
+        .points {
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
@@ -47,28 +102,52 @@
         </div>        
     </header>
     <!-- The rest of the leaderboard page content goes here -->
-    <ol id="leaderboard-list"></ol>
+    <div class="content-container">
+        <input type="text" id="searchInput" placeholder="Search by email" oninput="searchLeaderboard()">
+        <div class="scrollable-list">
+            <ul id="leaderboard-list"></ul>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', async () => {
           const leaderboardList = document.getElementById('leaderboard-list');
     
           try {
-            const response = await fetch('/get-leaderboard');
+            const response = await fetch('/get-data');
             const data = await response.json();
 
             //sorting the data
             data.sort((a, b) => b.score - a.score);
     
             // Process data and update the leaderboardList
+            let i = 1;
             data.forEach(entry => {
               const listItem = document.createElement('li');
               listItem.textContent = `${entry.email} - ${entry.score}`;
               leaderboardList.appendChild(listItem);
+              i++;
             });
           } catch (err) {
             console.error('Error fetching leaderboard data', err);
           }
         });
-      </script>
+
+        function searchLeaderboard() {
+            const input = document.getElementById('searchInput');
+            const filter = input.value.toUpperCase();
+            const leaderboardList = document.getElementById('leaderboard-list');
+            const items = leaderboardList.getElementsByTagName('li');
+
+            for (let i = 0; i < items.length; i++) {
+                const textValue = items[i].textContent || items[i].innerText;
+                if (textValue.toUpperCase().indexOf(filter) > -1) {
+                    items[i].style.display = '';
+                } else {
+                    items[i].style.display = 'none';
+                }
+            }
+        }
+    </script>
 </body>
 </html>
