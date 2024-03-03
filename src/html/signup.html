@@ -16,7 +16,7 @@
         </a>
     </div>    
     
-    <form class="signup-form" id="signUp" action="http://localhost:3000/submit-form" method="post">
+    <form class="signup-form" id="signupForm" method="post">
 
         <input type="email" id="email" name="email" placeholder="email@school" required>
 
@@ -34,4 +34,25 @@
     </form>
 </div>
 </body>
+<script >
+    console.log("Signup page loaded");
+    document.getElementById("signupForm").addEventListener("submit",( event)=> {
+        event.preventDefault();
+        fetch("http://localhost:3000/submit-form", {
+            method: "POST",
+            mode: "no-cors", // no-cors, *cors, same-origin
+            headers: {
+                "Accept": "application/json",
+                "Content-Type": "application/json"
+            },
+            body:JSON.stringify( {
+                email: document.getElementById("email").value,
+                password: document.getElementById("password").value,
+                school: document.getElementById("school").value
+            })
+        }).then(e=> {
+            console.log(e);
+        })
+    })
+</script>
 </html>
