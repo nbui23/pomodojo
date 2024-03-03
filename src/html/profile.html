@@ -22,19 +22,27 @@
         </div>
     </header>
     <!-- The rest of the profile page content goes here -->
-    <div id="profile">
-        <div class="profile__image__div">
-            <img classs="profile__image__div" id="profile__image" src="../assets/images/cutetomato.png" alt="Profile Picture">
-        </div>
-        <div id="profile__info">
-            <p id="profile__email"></p>
-            <p id="profile__school"></p>
-            <p id="score"></p>
-            <p id="points"></p>
-            <p id="leaderboard"></p>
-        </div>
+    <div id="loading-gif">
+        <img src="../assets/images/loadingDuck.gif" alt="Loading">
     </div>
-         
+    <div class="content-container">
+        <div id="profile">
+            <div class="profile__image__div">
+                <img classs="profile__image__div" id="profile__image" src="../assets/images/cutetomato.png" alt="Profile Picture">
+            </div>
+            <div id="profile__info">
+                <p id="profile__email"></p>
+                <p id="profile__school"></p>
+                <p id="score"></p>
+                <p id="points"></p>
+                <p id="leaderboard"></p>
+            </div>
+        </div>
+        <div id="redirect-buttons-div">
+            <a href="room.html" class="buttons" id="global-room">Join Global Room</a>
+            <!-- <a href="personal-room.html" class="buttons" id="personal-room">Join Personal Room</a> -->
+        </div>
+    </div>   
     
     <script src="../js/profile.js"></script>
 </body>

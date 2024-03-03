@@ -29,13 +29,20 @@
     text-decoration: none;
 }
 
+
+#loading-gif {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 /* Profile section styling */
 #profile {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh; /* Set the height of the profile section to 100% of the viewport height */
-    background-color: #f0f0f0; /* Background color for the profile section */
+    display: none;
 }
 
 #profile__image {
@@ -57,6 +64,7 @@
     color: black; /* Set the text color to black for better contrast */
 }
 
+
 /* Additional styles for profile data */
 #profile__email,
 #profile__school,
@@ -76,3 +84,53 @@
         margin-bottom: 10px;
     }
 }
+
+/* Button CSS */
+/* CSS */
+#redirect-buttons-div {
+    text-align: center;
+    position: relative;
+    top: -150px; /* Adjust position to pull the buttons up */
+    display: none;
+}
+
+.buttons {
+    background: #FF6666;
+    border: 1px solid #FF6666;
+    border-radius: 6px;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 4px;
+    box-sizing: border-box;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 16px;
+    min-height: 40px;
+    outline: 0;
+    padding: 12px 14px;
+    text-align: center;
+    text-rendering: geometricprecision;
+    text-transform: none;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    vertical-align: middle;
+    text-decoration: none;
+    margin: 20px; /* Center the buttons horizontally */
+}
+
+.buttons:hover,
+.buttons:active {
+    background-color: initial;
+    background-position: 0 0;
+    color: #FF4742;
+    animation-delay: 0.5s;
+}
+
+.buttons:active {
+    opacity: .5;
+}
+
+
+

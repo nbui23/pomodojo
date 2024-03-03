@@ -13,17 +13,19 @@ document.addEventListener('DOMContentLoaded', async () => {
   
       // Sort the users by score
       console.log(userInfo);
-      const sortedUsers = users.slice().sort((a, b) => b.score - a.score);
+      console.log(allUsers);
+      const sortedUsers = allUsers.slice().sort((a, b) => b.score - a.score);
+      console.log(sortedUsers);
     
       // Find the index of the current user in the sorted list
-      const userIndex = sortedUsers.findIndex(user => user.name === currentUser.name && user.score === currentUser.score);
+      const userIndex = sortedUsers.findIndex(user => user.email === userInfo.email);
 
       // Calculate the rank of the current user
       const userRank = userIndex !== -1 ? userIndex + 1 : null; // Add 1 because rank starts from 1
     
 
     // Calculate the rank of the current user
-      console.log(userIndex);
+      console.log(userRank);
     
       
 
@@ -32,6 +34,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       const score = userInfo.score;
       const points = userInfo.points;
 
+      const profileDiv = document.getElementById('profile');
+      const buttonsDiv = document.getElementById('redirect-buttons-div');
+      const loadingDiv = document.getElementById('loading-gif');
       const emailDiv = document.getElementById('profile__email');
       const schoolDiv = document.getElementById('profile__school');
       const scoreDiv = document.getElementById('score');
@@ -42,9 +47,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       schoolDiv.textContent = `School: ${school}`;
       scoreDiv.textContent = `Score: ${score}`;
       pointsDiv.textContent = `Points: ${points}`;
-      leaderboardDiv.textContent = `Leaderboard Position: ${leaderboard}`;
-
-
+      leaderboardDiv.textContent = `Leaderboard Position: ${userRank}`;
+      loadingDiv.style.display = 'none';
+      profileDiv.style.display = 'flex';
+      buttonsDiv.style.display = 'block';
     } catch (err) {
       console.error('Error fetching leaderboard data', err);
     }
