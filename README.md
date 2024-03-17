@@ -1,3 +1,7 @@
+## Devpost
+
+[Pomodojo](https://devpost.com/software/pomodorm)
+
 ## Inspiration
 
 The inspiration for Pomodojo came from my friends and I increasingly relying on the Pomodoro technique during midterm season. While we tried to use Discord as a makeshift study hall, it fell short due to its lack of specific features for our needs, such as a dedicated Pomodoro timer and a system to keep each other accountable in a charming and engaging manner. Recognizing the gap for a specialized, distraction-free, and cute platform that combines the best of productivity techniques with the social aspect of studying, we envisioned Pomodojo: a cute, all-in-one application designed to make studying a shared, rewarding experience. 
