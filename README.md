@@ -1,4 +1,4 @@
-## Devpost
+## Pomodojo
 
 [Pomodojo](https://devpost.com/software/pomodorm)
 
